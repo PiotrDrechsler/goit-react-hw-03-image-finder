@@ -1,24 +1,33 @@
 import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ image }) => {
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+
+import s from './ImageGallery.module.css';
+
+export const ImageGallery = ({ images, onClickImage }) => {
   return (
-    <ul>
-      {image.map(({ id, webformatURL, largeImageURL }) => (
-        <li key={id}>
-          <p>{webformatURL}</p>
-          <p>{largeImageURL}</p>
-        </li>
+    <ul className={s.ImageGallery}>
+      {images.map(({ webformatURL, largeImageURL, id, tags }) => (
+        <ImageGalleryItem
+          key={id}
+          webformatURL={webformatURL}
+          largeImageURL={largeImageURL}
+          tags={tags}
+          onClickImage={onClickImage}
+        />
       ))}
     </ul>
   );
 };
 
 ImageGallery.propTypes = {
-  image: PropTypes.arrayOf(
+  onClickImage: PropTypes.func,
+  images: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       webformatURL: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
     })
   ),
 };
