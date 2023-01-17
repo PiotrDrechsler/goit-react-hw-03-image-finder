@@ -43,13 +43,12 @@ export class App extends Component {
     this.fetchGallery(this.state.query, this.state.page + 1);
   };
 
-  onClickImage = clickedImage => {
-    const largeImageURL = clickedImage.currentTarget.largeimage;
-    this.setState({ showModal: true, largeImageURL: largeImageURL });
+  onClickImage = url => {
+    this.setState({ showModal: true, largeImageURL: url });
   };
 
   onModalClose = () => {
-    this.setState({ isModalOpen: false });
+    this.setState({ showModal: false, largeImageURL: '' });
   };
 
   async fetchGallery(query, page) {
@@ -80,7 +79,7 @@ export class App extends Component {
   }
 
   render() {
-    const { images, largeImageURL, isLoading, showBtn, showModal } = this.state;
+    const { images, isLoading, showBtn, showModal, largeImageURL } = this.state;
 
     return (
       <div className={s.App}>

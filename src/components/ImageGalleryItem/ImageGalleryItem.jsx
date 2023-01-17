@@ -14,7 +14,7 @@ const ImageGalleryItem = ({
       <li className={s.ImageGalleryItem}>
         <img
           key={id}
-          onClick={onClickImage}
+          onClick={() => onClickImage(largeImageURL)}
           className={s.ImageGalleryItem__image}
           src={webformatURL}
           alt={tags}
