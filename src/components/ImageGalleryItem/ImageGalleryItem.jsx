@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import s from './ImageGalleryItem.module.css';
 
 const ImageGalleryItem = ({
-  id,
   webformatURL,
   largeImageURL,
   tags,
@@ -13,7 +12,6 @@ const ImageGalleryItem = ({
     <>
       <li className={s.ImageGalleryItem}>
         <img
-          key={id}
           onClick={() => onClickImage(largeImageURL)}
           className={s.ImageGalleryItem__image}
           src={webformatURL}
@@ -27,7 +25,6 @@ const ImageGalleryItem = ({
 
 ImageGalleryItem.propTypes = {
   onClickImage: PropTypes.func,
-  id: PropTypes.number,
   webformatURL: PropTypes.string.isRequired,
   largeImageURL: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,

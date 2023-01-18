@@ -65,9 +65,6 @@ export class App extends Component {
       if (response.length === 12) {
         this.setState({ showBtn: true });
       }
-      if (response.length >= 1 || response.length === 0) {
-        this.setState({ isLoading: false });
-      }
       if (response.length === 0) {
         Notify.failure('No matches found!');
       }
